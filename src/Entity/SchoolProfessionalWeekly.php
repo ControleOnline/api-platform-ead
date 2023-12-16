@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\EntityListeners ({App\Listener\LogListener::class})
- * @ORM\Entity (repositoryClass="App\Repository\SchoolProfessionalWeeklyRepository")
+ * @ORM\Entity (repositoryClass="ControleOnline\Repository\SchoolProfessionalWeeklyRepository")
  */
 #[ApiResource(operations: [new Get(security: 'is_granted(\'ROLE_CLIENT\')'), new Delete(security: 'is_granted(\'ROLE_CLIENT\')'), new GetCollection(security: 'is_granted(\'ROLE_CLIENT\')'), new GetCollection(security: 'is_granted(\'ROLE_CLIENT\')', uriTemplate: '/school_professional_weeklies/available-professionals', controller: \App\Controller\GetAvailableProfessionalsAction::class), new Post(securityPostDenormalize: 'is_granted(\'ROLE_CLIENT\')')], normalizationContext: ['groups' => ['school_professional_weekly_read']], denormalizationContext: ['groups' => ['school_professional_weekly_write']], security: 'is_granted(\'ROLE_CLIENT\')')]
 #[ApiFilter(filterClass: SearchFilter::class, properties: ['peopleProfessional' => 'exact'])]

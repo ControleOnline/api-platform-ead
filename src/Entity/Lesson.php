@@ -16,7 +16,7 @@ use App\Controller\UploadLessonFileAction;
 /**
  * @ORM\EntityListeners ({App\Listener\LogListener::class})
  * @ORM\Table (name="lessons")
- * @ORM\Entity (repositoryClass="App\Repository\LessonRepository")
+ * @ORM\Entity (repositoryClass="ControleOnline\Repository\LessonRepository")
  */
 #[ApiResource(operations: [new Get(), new GetCollection(), new Post(denormalizationContext: ['groups' => ['lesson:collection:post']]), new Post(uriTemplate: '/lessons/upload_file', controller: \App\Controller\UploadLessonFileAction::class, deserialize: false, security: 'is_granted(\'ROLE_CLIENT\')', validationContext: ['groups' => ['Default', 'order_upload_nf']], normalizationContext: ['groups' => ['lesson_upload_file:post']], openapiContext: ['consumes' => ['multipart/form-data']])], formats: ['jsonld', 'json', 'html', 'jsonhal', 'csv' => ['text/csv']], normalizationContext: ['groups' => ['lesson:read']], security: 'is_granted(\'ROLE_CLIENT\')')]
 class Lesson

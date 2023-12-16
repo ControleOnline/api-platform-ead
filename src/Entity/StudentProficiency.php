@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\EntityListeners ({App\Listener\LogListener::class})
  * @ORM\Table (name="student_proficiency")
- * @ORM\Entity (repositoryClass="App\Repository\StudentProficiencyRepository")
+ * @ORM\Entity (repositoryClass="ControleOnline\Repository\StudentProficiencyRepository")
  */
 #[ApiResource(normalizationContext: ['groups' => ['read'], 'datetime_format' => 'Y-m-d H:i:s'], denormalizationContext: ['groups' => ['write']])]
 class StudentProficiency
