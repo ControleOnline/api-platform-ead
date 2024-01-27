@@ -101,9 +101,9 @@ class SchoolClass
      */
     private $team;
     /**
-     * @var \ControleOnline\Entity\PurchasingOrder
+     * @var \ControleOnline\Entity\Order
      *
-     * @ORM\ManyToOne(targetEntity="ControleOnline\Entity\PurchasingOrder")
+     * @ORM\ManyToOne(targetEntity="ControleOnline\Entity\Order")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="order_id", referencedColumnName="id", nullable=false)
      * })
@@ -276,9 +276,9 @@ class SchoolClass
     /**
      * Set order
      *
-     * @param \ControleOnline\Entity\PurchasingOrder $order
+     * @param \ControleOnline\Entity\Order $order
      */
-    public function setOrder(\ControleOnline\Entity\PurchasingOrder $order = null) : self
+    public function setOrder(\ControleOnline\Entity\Order $order = null) : self
     {
         $this->order = $order;
         return $this;
@@ -286,15 +286,15 @@ class SchoolClass
     /**
      * Get order
      *
-     * @return \ControleOnline\Entity\PurchasingOrder
+     * @return \ControleOnline\Entity\Order
      */
-    public function getOrder() : ?PurchasingOrder
+    public function getOrder() : ?Order
     {
         return $this->order;
     }
     public function hasOrder() : bool
     {
-        return $this->order instanceof PurchasingOrder;
+        return $this->order instanceof Order;
     }
     public function getObservations() : ?string
     {
