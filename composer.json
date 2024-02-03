@@ -1,5 +1,4 @@
 {
-    "type": "symfony-bundle",
     "name": "controleonline/ead",
     "license": "MIT",
     "autoload": {
