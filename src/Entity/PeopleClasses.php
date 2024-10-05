@@ -34,8 +34,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
         )
     ],
     formats: ['jsonld', 'json', 'html', 'jsonhal', 'csv' => ['text/csv']],
-    normalizationContext: ['groups' => ['invoice_tax_read']],
-    denormalizationContext: ['groups' => ['invoice_tax_write']]
+    normalizationContext: ['groups' => ['invoice_tax:read']],
+    denormalizationContext: ['groups' => ['invoice_tax:write']]
 )] 
 class PeopleClasses
 {
