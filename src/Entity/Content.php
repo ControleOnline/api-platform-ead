@@ -43,7 +43,7 @@ use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
     ],
     normalizationContext: ['groups' => ['content_read']],
     denormalizationContext: ['groups' => ['content_write']]
-)]
+)] 
 class Content
 {
     /**
