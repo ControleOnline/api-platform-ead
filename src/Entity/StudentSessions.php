@@ -1,6 +1,7 @@
 <?php
 
-namespace ControleOnline\Entity;
+namespace ControleOnline\Entity; 
+use ControleOnline\Listener\LogListener;
 
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Get;
@@ -14,9 +15,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * StudentSessions
  *
- * @ORM\Table(name="ead_student_sessions", indexes={@ORM\Index(name="status_id", columns={"status_id"}), @ORM\Index(name="session_id", columns={"session_id"})})
- * @ORM\Entity
-
  */
 #[ApiResource(
     routePrefix: '/ead', // Adiciona o prefixo para as rotas dessa entidade
@@ -36,49 +34,44 @@ use Symfony\Component\Serializer\Annotation\Groups;
     formats: ['jsonld', 'json', 'html', 'jsonhal', 'csv' => ['text/csv']],
     normalizationContext: ['groups' => ['invoice_tax:read']],
     denormalizationContext: ['groups' => ['invoice_tax:write']]
-)] 
+)]
+#[ORM\Table(name: 'ead_student_sessions')]
+#[ORM\Index(name: 'status_id', columns: ['status_id'])]
+#[ORM\Index(name: 'session_id', columns: ['session_id'])]
+#[ORM\Entity] 
 class StudentSessions
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
+    #[ORM\Column(name: 'id', type: 'integer', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
     private $id;
 
     /**
      * @var \DateTime|null
-     *
-     * @ORM\Column(name="start_date", type="datetime", nullable=true)
      */
+    #[ORM\Column(name: 'start_date', type: 'datetime', nullable: true)]
     private $startDate;
 
     /**
      * @var \DateTime|null
-     *
-     * @ORM\Column(name="end_date", type="datetime", nullable=true)
      */
+    #[ORM\Column(name: 'end_date', type: 'datetime', nullable: true)]
     private $endDate;
 
     /**
      * @var \Status
-     *
-     * @ORM\ManyToOne(targetEntity="Status")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="status_id", referencedColumnName="id")
-     * })
      */
+    #[ORM\JoinColumn(name: 'status_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \Status::class)]
     private $status;
 
     /**
      * @var \Sessions
-     *
-     * @ORM\ManyToOne(targetEntity="Sessions")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="session_id", referencedColumnName="id")
-     * })
      */
+    #[ORM\JoinColumn(name: 'session_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \Sessions::class)]
     private $session;
 }

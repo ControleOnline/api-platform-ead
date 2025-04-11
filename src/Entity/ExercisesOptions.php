@@ -1,6 +1,7 @@
 <?php
 
-namespace ControleOnline\Entity;
+namespace ControleOnline\Entity; 
+use ControleOnline\Listener\LogListener;
 
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Get;
@@ -14,9 +15,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * ExercisesOptions
  *
- * @ORM\Table(name="ead_exercises_options", indexes={@ORM\Index(name="exercise_id", columns={"exercise_id"})})
- * @ORM\Entity
-
  */
 #[ApiResource(
     routePrefix: '/ead', // Adiciona o prefixo para as rotas dessa entidade
@@ -36,40 +34,37 @@ use Symfony\Component\Serializer\Annotation\Groups;
     formats: ['jsonld', 'json', 'html', 'jsonhal', 'csv' => ['text/csv']],
     normalizationContext: ['groups' => ['invoice_tax:read']],
     denormalizationContext: ['groups' => ['invoice_tax:write']]
-)] 
+)]
+#[ORM\Table(name: 'ead_exercises_options')]
+#[ORM\Index(name: 'exercise_id', columns: ['exercise_id'])]
+#[ORM\Entity] 
 class ExercisesOptions
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
+    #[ORM\Column(name: 'id', type: 'integer', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="option", type="string", length=255, nullable=false)
      */
+    #[ORM\Column(name: 'option', type: 'string', length: 255, nullable: false)]
     private $option;
 
     /**
      * @var bool
-     *
-     * @ORM\Column(name="correct", type="boolean", nullable=false)
      */
+    #[ORM\Column(name: 'correct', type: 'boolean', nullable: false)]
     private $correct;
 
     /**
      * @var \Exercises
-     *
-     * @ORM\ManyToOne(targetEntity="Exercises")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="exercise_id", referencedColumnName="id")
-     * })
      */
+    #[ORM\JoinColumn(name: 'exercise_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \Exercises::class)]
     private $exercise;
 
 

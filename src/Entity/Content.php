@@ -1,6 +1,7 @@
 <?php
 
-namespace ControleOnline\Entity;
+namespace ControleOnline\Entity; 
+use ControleOnline\Listener\LogListener;
 
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Get;
@@ -18,9 +19,6 @@ use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 /**
  * Content
  *
- * @ORM\Table(name="ead_content", indexes={@ORM\Index(name="subjects_id", columns={"subjects_id"}), @ORM\Index(name="file_id", columns={"file_id"})})
- * @ORM\Entity
-
  */
 #[ApiResource(
     routePrefix: '/ead', // Adiciona o prefixo para as rotas dessa entidade
@@ -43,43 +41,28 @@ use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
     ],
     normalizationContext: ['groups' => ['content_read']],
     denormalizationContext: ['groups' => ['content_write']]
-)] 
+)]
+#[ORM\Table(name: 'ead_content')]
+#[ORM\Index(name: 'subjects_id', columns: ['subjects_id'])]
+#[ORM\Index(name: 'file_id', columns: ['file_id'])]
+#[ORM\Entity] 
 class Content
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     **/
-
     #[ApiFilter(filterClass: SearchFilter::class, properties: ['id' => 'exact'])]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     *
-     *
-     * @ORM\Column(name="content", type="string", length=255, nullable=false)
-     */
+    #[ORM\Column(name: 'content', type: 'string', length: 255, nullable: false)]
     private $content;
 
-    /**
-     * 
-     *
-     * @ORM\ManyToOne(targetEntity="Category")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="subjects_id", referencedColumnName="id")
-     * })
-     */
+    #[ORM\JoinColumn(name: 'subjects_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \Category::class)]
     private $subjects;
 
-    /**
-     *
-     *
-     * @ORM\ManyToOne(targetEntity="File")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="file_id", referencedColumnName="id")
-     * })
-     */
+    #[ORM\JoinColumn(name: 'file_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \File::class)]
     private $file;
 
     /**

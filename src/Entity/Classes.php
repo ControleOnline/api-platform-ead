@@ -1,6 +1,7 @@
 <?php
 
-namespace ControleOnline\Entity;
+namespace ControleOnline\Entity; 
+use ControleOnline\Listener\LogListener;
 
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Get;
@@ -14,9 +15,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * Classes
  *
- * @ORM\Table(name="ead_classes", indexes={@ORM\Index(name="courses_id", columns={"courses_id"}), @ORM\Index(name="subjects_id", columns={"subjects_id"})})
- * @ORM\Entity
-
  */
 #[ApiResource(
     routePrefix: '/ead', // Adiciona o prefixo para as rotas dessa entidade
@@ -36,42 +34,38 @@ use Symfony\Component\Serializer\Annotation\Groups;
     formats: ['jsonld', 'json', 'html', 'jsonhal', 'csv' => ['text/csv']],
     normalizationContext: ['groups' => ['invoice_tax:read']],
     denormalizationContext: ['groups' => ['invoice_tax:write']]
-)] 
+)]
+#[ORM\Table(name: 'ead_classes')]
+#[ORM\Index(name: 'courses_id', columns: ['courses_id'])]
+#[ORM\Index(name: 'subjects_id', columns: ['subjects_id'])]
+#[ORM\Entity] 
 class Classes
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
+    #[ORM\Column(name: 'id', type: 'integer', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="classes", type="string", length=255, nullable=false)
      */
+    #[ORM\Column(name: 'classes', type: 'string', length: 255, nullable: false)]
     private $classes;
 
     /**
      * @var \Category
-     *
-     * @ORM\ManyToOne(targetEntity="Category")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="courses_id", referencedColumnName="id")
-     * })
      */
+    #[ORM\JoinColumn(name: 'courses_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \Category::class)]
     private $courses;
 
     /**
      * @var \Category
-     *
-     * @ORM\ManyToOne(targetEntity="Category")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="subjects_id", referencedColumnName="id")
-     * })
      */
+    #[ORM\JoinColumn(name: 'subjects_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \Category::class)]
     private $subjects;
 }

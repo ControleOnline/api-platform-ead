@@ -1,6 +1,7 @@
 <?php
 
-namespace ControleOnline\Entity;
+namespace ControleOnline\Entity; 
+use ControleOnline\Listener\LogListener;
 
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Get;
@@ -14,9 +15,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * StudentSessionResponses
  *
- * @ORM\Table(name="ead_student_session_responses", indexes={@ORM\Index(name="student_session_id", columns={"student_session_id"}), @ORM\Index(name="exercise_id", columns={"exercise_id"}), @ORM\Index(name="response_id", columns={"response_id"})})
- * @ORM\Entity
-
  */
 #[ApiResource(
     routePrefix: '/ead', // Adiciona o prefixo para as rotas dessa entidade
@@ -36,46 +34,41 @@ use Symfony\Component\Serializer\Annotation\Groups;
     formats: ['jsonld', 'json', 'html', 'jsonhal', 'csv' => ['text/csv']],
     normalizationContext: ['groups' => ['invoice_tax:read']],
     denormalizationContext: ['groups' => ['invoice_tax:write']]
-)] 
+)]
+#[ORM\Table(name: 'ead_student_session_responses')]
+#[ORM\Index(name: 'student_session_id', columns: ['student_session_id'])]
+#[ORM\Index(name: 'exercise_id', columns: ['exercise_id'])]
+#[ORM\Index(name: 'response_id', columns: ['response_id'])]
+#[ORM\Entity] 
 class StudentSessionResponses
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
+    #[ORM\Column(name: 'id', type: 'integer', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
     private $id;
 
     /**
      * @var \Exercises
-     *
-     * @ORM\ManyToOne(targetEntity="Exercises")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="exercise_id", referencedColumnName="id")
-     * })
      */
+    #[ORM\JoinColumn(name: 'exercise_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \Exercises::class)]
     private $exercise;
 
     /**
      * @var \ExercisesOptions
-     *
-     * @ORM\ManyToOne(targetEntity="ExercisesOptions")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="response_id", referencedColumnName="id")
-     * })
      */
+    #[ORM\JoinColumn(name: 'response_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \ExercisesOptions::class)]
     private $response;
 
     /**
      * @var \StudentSessions
-     *
-     * @ORM\ManyToOne(targetEntity="StudentSessions")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="student_session_id", referencedColumnName="id")
-     * })
      */
+    #[ORM\JoinColumn(name: 'student_session_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \StudentSessions::class)]
     private $studentSession;
 
 
