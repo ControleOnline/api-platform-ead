@@ -30,7 +30,7 @@ use Doctrine\ORM\Mapping as ORM;
             deserialize: false,
             security: 'is_granted(\'ROLE_CLIENT\')',
             validationContext: ['groups' => ['Default', 'order_upload_nf']],
-            openapiContext: ['consumes' => ['multipart/form-data']]
+            inputFormats: ['multipart' => ['multipart/form-data']]
         )
     ],
     formats: ['jsonld', 'json', 'html', 'jsonhal', 'csv' => ['text/csv']],
