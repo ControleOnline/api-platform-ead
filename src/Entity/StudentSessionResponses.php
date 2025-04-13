@@ -1,6 +1,9 @@
 <?php
 
 namespace ControleOnline\Entity; 
+use Exercises;
+use ExercisesOptions;
+use StudentSessions;
 use ControleOnline\Listener\LogListener;
 
 use ApiPlatform\Metadata\Post;
@@ -51,24 +54,24 @@ class StudentSessionResponses
     private $id;
 
     /**
-     * @var \Exercises
+     * @var Exercises
      */
     #[ORM\JoinColumn(name: 'exercise_id', referencedColumnName: 'id')]
-    #[ORM\ManyToOne(targetEntity: \Exercises::class)]
+    #[ORM\ManyToOne(targetEntity: Exercises::class)]
     private $exercise;
 
     /**
-     * @var \ExercisesOptions
+     * @var ExercisesOptions
      */
     #[ORM\JoinColumn(name: 'response_id', referencedColumnName: 'id')]
-    #[ORM\ManyToOne(targetEntity: \ExercisesOptions::class)]
+    #[ORM\ManyToOne(targetEntity: ExercisesOptions::class)]
     private $response;
 
     /**
-     * @var \StudentSessions
+     * @var StudentSessions
      */
     #[ORM\JoinColumn(name: 'student_session_id', referencedColumnName: 'id')]
-    #[ORM\ManyToOne(targetEntity: \StudentSessions::class)]
+    #[ORM\ManyToOne(targetEntity: StudentSessions::class)]
     private $studentSession;
 
 

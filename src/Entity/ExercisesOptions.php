@@ -1,6 +1,7 @@
 <?php
 
 namespace ControleOnline\Entity; 
+use Exercises;
 use ControleOnline\Listener\LogListener;
 
 use ApiPlatform\Metadata\Post;
@@ -61,10 +62,10 @@ class ExercisesOptions
     private $correct;
 
     /**
-     * @var \Exercises
+     * @var Exercises
      */
     #[ORM\JoinColumn(name: 'exercise_id', referencedColumnName: 'id')]
-    #[ORM\ManyToOne(targetEntity: \Exercises::class)]
+    #[ORM\ManyToOne(targetEntity: Exercises::class)]
     private $exercise;
 
 

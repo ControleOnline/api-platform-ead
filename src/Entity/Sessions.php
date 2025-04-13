@@ -1,6 +1,8 @@
 <?php
 
 namespace ControleOnline\Entity; 
+use Content;
+use DateTime;
 use ControleOnline\Listener\LogListener;
 
 use ApiPlatform\Metadata\Post;
@@ -61,22 +63,22 @@ class Sessions
     private $session;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     #[ORM\Column(name: 'start_data', type: 'datetime', nullable: true)]
     private $startData;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     #[ORM\Column(name: 'end_data', type: 'datetime', nullable: true)]
     private $endData;
 
     /**
-     * @var \Content
+     * @var Content
      */
     #[ORM\JoinColumn(name: 'content_id', referencedColumnName: 'id')]
-    #[ORM\ManyToOne(targetEntity: \Content::class)]
+    #[ORM\ManyToOne(targetEntity: Content::class)]
     private $content;
 
 

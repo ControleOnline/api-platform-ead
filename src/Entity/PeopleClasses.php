@@ -1,6 +1,7 @@
 <?php
 
 namespace ControleOnline\Entity; 
+use People;
 use ControleOnline\Listener\LogListener;
 
 use ApiPlatform\Metadata\Post;
@@ -55,10 +56,10 @@ class PeopleClasses
     private $peopleType;
 
     /**
-     * @var \People
+     * @var People
      */
     #[ORM\JoinColumn(name: 'people_id', referencedColumnName: 'id')]
-    #[ORM\ManyToOne(targetEntity: \People::class)]
+    #[ORM\ManyToOne(targetEntity: People::class)]
     private $people;
 
 

@@ -1,6 +1,8 @@
 <?php
 
 namespace ControleOnline\Entity; 
+use Content;
+use File;
 use ControleOnline\Listener\LogListener;
 
 use ApiPlatform\Metadata\Post;
@@ -56,17 +58,17 @@ class Exercises
     private $exerciseType;
 
     /**
-     * @var \Content
+     * @var Content
      */
     #[ORM\JoinColumn(name: 'content_id', referencedColumnName: 'id')]
-    #[ORM\ManyToOne(targetEntity: \Content::class)]
+    #[ORM\ManyToOne(targetEntity: Content::class)]
     private $content;
 
     /**
-     * @var \File
+     * @var File
      */
     #[ORM\JoinColumn(name: 'file_id', referencedColumnName: 'id')]
-    #[ORM\ManyToOne(targetEntity: \File::class)]
+    #[ORM\ManyToOne(targetEntity: File::class)]
     private $file;
 
 

@@ -1,6 +1,8 @@
 <?php
 
 namespace ControleOnline\Entity; 
+use Category;
+use File;
 use ControleOnline\Listener\LogListener;
 
 use ApiPlatform\Metadata\Post;
@@ -58,11 +60,11 @@ class Content
     private $content;
 
     #[ORM\JoinColumn(name: 'subjects_id', referencedColumnName: 'id')]
-    #[ORM\ManyToOne(targetEntity: \Category::class)]
+    #[ORM\ManyToOne(targetEntity: Category::class)]
     private $subjects;
 
     #[ORM\JoinColumn(name: 'file_id', referencedColumnName: 'id')]
-    #[ORM\ManyToOne(targetEntity: \File::class)]
+    #[ORM\ManyToOne(targetEntity: File::class)]
     private $file;
 
     /**

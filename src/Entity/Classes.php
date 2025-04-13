@@ -1,6 +1,7 @@
 <?php
 
 namespace ControleOnline\Entity; 
+use Category;
 use ControleOnline\Listener\LogListener;
 
 use ApiPlatform\Metadata\Post;
@@ -56,16 +57,16 @@ class Classes
     private $classes;
 
     /**
-     * @var \Category
+     * @var Category
      */
     #[ORM\JoinColumn(name: 'courses_id', referencedColumnName: 'id')]
-    #[ORM\ManyToOne(targetEntity: \Category::class)]
+    #[ORM\ManyToOne(targetEntity: Category::class)]
     private $courses;
 
     /**
-     * @var \Category
+     * @var Category
      */
     #[ORM\JoinColumn(name: 'subjects_id', referencedColumnName: 'id')]
-    #[ORM\ManyToOne(targetEntity: \Category::class)]
+    #[ORM\ManyToOne(targetEntity: Category::class)]
     private $subjects;
 }
