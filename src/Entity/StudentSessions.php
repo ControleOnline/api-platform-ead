@@ -1,6 +1,8 @@
 <?php
 
-namespace ControleOnline\Entity; 
+namespace ControleOnline\Entity;
+
+use Symfony\Component\Serializer\Attribute\Groups; 
 use Status;
 use Sessions;
 use DateTime;
@@ -13,7 +15,6 @@ use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiFilter;
 use ControleOnline\Controller\DownloadOrderNFAction;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * StudentSessions
