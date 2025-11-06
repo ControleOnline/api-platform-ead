@@ -6,7 +6,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
 use Exercises;
 use ExercisesOptions;
 use StudentSessions;
-use ControleOnline\Listener\LogListener;
+
 
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Get;

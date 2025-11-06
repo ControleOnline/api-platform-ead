@@ -4,7 +4,7 @@ namespace ControleOnline\Entity;
 
 use Symfony\Component\Serializer\Attribute\Groups; 
 use Exercises;
-use ControleOnline\Listener\LogListener;
+
 
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Get;
