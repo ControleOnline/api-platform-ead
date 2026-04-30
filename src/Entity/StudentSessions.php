@@ -24,13 +24,13 @@ use Doctrine\ORM\Mapping as ORM;
     routePrefix: '/ead', // Adiciona o prefixo para as rotas dessa entidade
     operations: [
         new Get(
-            security: 'is_granted(\'ROLE_CLIENT\')'
+            security: 'is_granted(\'ROLE_HUMAN\')'
         ),
 
         new Post(
             
             deserialize: false,
-            security: 'is_granted(\'ROLE_CLIENT\')',
+            security: 'is_granted(\'ROLE_HUMAN\')',
             validationContext: ['groups' => ['Default', 'order_upload_nf']],
             inputFormats: ['multipart' => ['multipart/form-data']]
         )

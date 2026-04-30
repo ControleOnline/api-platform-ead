@@ -27,19 +27,19 @@ use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
     routePrefix: '/ead', // Adiciona o prefixo para as rotas dessa entidade
     operations: [
         new Get(
-            security: 'is_granted(\'ROLE_CLIENT\')',
+            security: 'is_granted(\'ROLE_HUMAN\')',
         ),
         new GetCollection(
-            security: 'is_granted(\'ROLE_CLIENT\')',
+            security: 'is_granted(\'ROLE_HUMAN\')',
         ),
         new Post(
-            security: 'is_granted(\'ROLE_CLIENT\')',
+            security: 'is_granted(\'ROLE_HUMAN\')',
         ),
         new Put(
-            security: 'is_granted(\'ROLE_CLIENT\')',
+            security: 'is_granted(\'ROLE_HUMAN\')',
         ),
         new Delete(
-            security: 'is_granted(\'ROLE_CLIENT\')',
+            security: 'is_granted(\'ROLE_HUMAN\')',
         ),
     ],
     normalizationContext: ['groups' => ['content_read']],
