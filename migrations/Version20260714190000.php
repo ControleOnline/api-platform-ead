@@ -115,16 +115,6 @@ final class Version20260714190000 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        $this->addSql('SET FOREIGN_KEY_CHECKS=0');
-        $this->addSql('DROP TABLE IF EXISTS `ead_student_sessions`');
-        $this->addSql('DROP TABLE IF EXISTS `ead_student_session_responses`');
-        $this->addSql('DROP TABLE IF EXISTS `ead_sessions_content`');
-        $this->addSql('DROP TABLE IF EXISTS `ead_sessions`');
-        $this->addSql('DROP TABLE IF EXISTS `ead_people_classes`');
-        $this->addSql('DROP TABLE IF EXISTS `ead_exercises_options`');
-        $this->addSql('DROP TABLE IF EXISTS `ead_exercises`');
-        $this->addSql('DROP TABLE IF EXISTS `ead_content`');
-        $this->addSql('DROP TABLE IF EXISTS `ead_classes`');
-        $this->addSql('SET FOREIGN_KEY_CHECKS=1');
+        return;
     }
 }
