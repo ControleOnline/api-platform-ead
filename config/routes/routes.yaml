@@ -1,0 +1,3 @@
+controleonline_ead:
+    resource: ../../src/Controller/
+    type: attribute
