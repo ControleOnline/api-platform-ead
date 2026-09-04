@@ -1,9 +1,6 @@
-## Escopo
-- Modulo de EAD.
-- Cobre classes, conteudos, exercicios, sessoes e progresso de aluno.
+## Ponto de entrada
 
-## Quando usar
-- Prompts sobre `Classes`, `Content`, `Exercises`, sessoes, respostas de aluno e fluxo de ensino.
-
-## Limites
-- Nao misturar aqui regra de usuarios, pagamentos ou pedidos que nao sejam do dominio de ensino.
+- A documentação funcional e de regras deste modulo vive na wiki do proprio repositório e na wiki principal da API.
+- Regras transversais de qualidade, modularizacao e limites de componente vivem em `https://github.com/ControleOnline/agents-mcp/blob/master/skills/shared/code-quality.md`.
+- Quando houver detalhe especifico de implementacao, prefira comentar no codigo em ingles perto da regra.
+- Este arquivo deve ficar curto e servir apenas como ponte para as fontes oficiais.
