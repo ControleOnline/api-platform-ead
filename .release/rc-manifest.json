@@ -1,0 +1,13 @@
+{
+  "version": "1.0.2",
+  "rc": 1,
+  "branch": "rc/1.0.2-rc.1",
+  "baseMaster": "9580a22874541881f5ba5468dcd18c2955c26098",
+  "tasks": [
+    167
+  ],
+  "repositories": {
+    "ControleOnline/api-platform-ead": "0e468a10fd0e135b6f1a7a4f47e96ca7b816c5ce"
+  },
+  "frozen": true
+}
